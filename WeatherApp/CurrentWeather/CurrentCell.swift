@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CryptoCell: UITableViewCell {
+class CurrentCell: UITableViewCell {
     
     static let identifier = "CurrentCell"
     
@@ -56,15 +56,16 @@ class CryptoCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(_ model: Data) {
-        nameOfCoinLabel.text = model.name
-        costLabel.text = String(format: "%.2f", model.marketData.priceUSD) + "$"
-        changeInValueLabel.text = String(format: "%.2f", model.marketData.percentChange24Hours) + "%"
+    func setupCell(_ model: Weather) {
+        cityNameLabel.text = model.name
+//        nameOfCoinLabel.text = model.name
+//        costLabel.text = String(format: "%.2f", model.marketData.priceUSD) + "$"
+//        changeInValueLabel.text = String(format: "%.2f", model.marketData.percentChange24Hours) + "%"
     }
 
     
     func layout() {
-        [cityNameLabel, minTempLabel, tempLabel].forEach { contentView.addSubview($0) }
+        [cityNameLabel, minTempLabel, tempLabel, descriptionLabel, maxTempLabel, localTimeLabel].forEach { contentView.addSubview($0) }
         
 
         NSLayoutConstraint.activate([

@@ -8,6 +8,8 @@
 import UIKit
 
 class CityViewController: UIViewController, Coordinating {
+    var cityWeather: [Weather] = []
+    
     var coordinator: Coordinator?
     let cityViewModel = CityViewModel()
     
@@ -50,7 +52,10 @@ class CityViewController: UIViewController, Coordinating {
         if let cityName = cityTextField.text {
             if cityTextField.text?.count != 0 {
                 cityViewModel.getData(for: cityName)
-                coordinator?.eventOccured(with: .showCurrentVC)
+                DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+                    self.coordinator?.eventOccured(with: .showCurrentVC(self.cityViewModel.weatherByCity[0]))
+                }
+                
             }
             
         } else {

@@ -5,7 +5,7 @@
 //  Created by Сергей Юханов on 11.03.2023.
 //
 
-import Foundation
+import UIKit
 
 
 class CityViewModel {
@@ -22,6 +22,7 @@ class CityViewModel {
             switch result {
             case .success(let data):
                 self.weatherByCity = data!
+    
             case .failure(let error):
                 print(error)
             }

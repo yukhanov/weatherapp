@@ -10,7 +10,7 @@ import Foundation
 class CurrentWeatherViewModel {
     let currentWeatherArray: [Weather] = CityViewModel().weatherByCity
     
-    func showCurrentWeather() {
-        currentWeatherArray[0].main?.temp
+    func addWeather(to array: [Weather]) {
+        
     }
 }

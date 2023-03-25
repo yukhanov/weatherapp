@@ -8,11 +8,17 @@
 import UIKit
 
 class CurrentWeatherViewController: UIViewController, Coordinating {
+    var cityWeather: [Weather] = []
+    
     var coordinator: Coordinator?
+    let cityViewModel = CityViewModel()
+    var weatherArray = [Weather]()
+    let currentWeatherViewModel = CurrentWeatherViewModel()
     
     private var currentTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(CurrentCell.self, forCellReuseIdentifier: CurrentCell.identifier)
         return tableView
     }()
     
@@ -23,6 +29,14 @@ class CurrentWeatherViewController: UIViewController, Coordinating {
         view.backgroundColor = .systemBackground
         setViews()
         setConstraints()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            print(self.currentWeatherViewModel.currentWeatherArray)
+            self.currentTableView.reloadData()
+        }
+        
+        
+    
     }
     
 }
@@ -30,11 +44,15 @@ class CurrentWeatherViewController: UIViewController, Coordinating {
 
 extension CurrentWeatherViewController: ViewConfigurable, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cityWeather.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell.init()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrentCell.identifier, for: indexPath) as? CurrentCell else { return UITableViewCell()}
+       // cell.setupCell(cityViewModel.weatherByCity[indexPath.row])
+        cell.setupCell(cityWeather[indexPath.row])
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -43,6 +61,8 @@ extension CurrentWeatherViewController: ViewConfigurable, UITableViewDelegate, U
     
     func setViews() {
         view.addSubview(currentTableView)
+        currentTableView.dataSource = self
+        currentTableView.delegate = self
     }
     
     func setConstraints() {

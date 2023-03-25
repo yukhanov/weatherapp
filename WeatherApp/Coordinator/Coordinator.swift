@@ -8,7 +8,7 @@
 import UIKit
 
 enum Event {
-    case showCurrentVC
+    case showCurrentVC(Weather)
 }
 
 protocol Coordinator {
@@ -20,4 +20,5 @@ protocol Coordinator {
 
 protocol Coordinating {
     var coordinator: Coordinator? { get set }
+    var cityWeather: [Weather] { get set }
 }
