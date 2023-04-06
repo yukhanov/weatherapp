@@ -15,7 +15,7 @@ extension WeatherViewController: ViewConfigurable, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as? WeatherCell else { return UITableViewCell()}
 
-        cell.setupCell(weatherArray[indexPath.row])
+        cell.setupCell(weatherArray[indexPath.row], indexPath: indexPath)
         
         return cell
     }
