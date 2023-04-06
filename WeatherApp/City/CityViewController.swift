@@ -63,16 +63,6 @@ class CityViewController: UIViewController, Coordinating {
                     self.coordinator?.eventOccured(with: .showCurrentVC(result))
                 }
                 
-                
-//                DispatchQueue.main.async {
-//                    
-//                    self.coordinator?.eventOccured(with: .showCurrentVC)
-//                    print("go to NextVC")
-//                }
-            
-                    //self.coordinator?.eventOccured(with: .showCurrentVC)
-                
-                
             }
             
         } else {

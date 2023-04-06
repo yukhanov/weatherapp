@@ -10,7 +10,6 @@ import UIKit
 extension WeatherViewController: ViewConfigurable, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weatherArray.count ?? 0
-        // change to viewModel func
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

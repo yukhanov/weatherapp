@@ -58,9 +58,24 @@ class WeatherCell: UITableViewCell {
     
     func setupCell(_ model: Weather) {
         cityNameLabel.text = model.name
-//        nameOfCoinLabel.text = model.name
-//        costLabel.text = String(format: "%.2f", model.marketData.priceUSD) + "$"
-//        changeInValueLabel.text = String(format: "%.2f", model.marketData.percentChange24Hours) + "%"
+        tempLabel.text = String(format: "%.0f", ((model.main?.temp ?? 0) - 273.15))
+        minTempLabel.text = String(format: "%.0f", ((model.main?.tempMin ?? 0) - 273.15))
+        maxTempLabel.text = String(format: "%.0f", ((model.main?.tempMax ?? 0) - 273.15))
+       
+        let unixTimestamp: Int? = model.dt
+
+        if let timestamp = unixTimestamp {
+            let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let formattedDate = dateFormatter.string(from: date)
+            localTimeLabel.text = formattedDate
+        } else {
+            print("Unix timestamp is nil.")
+        }
+        
+    
+
     }
 
     
