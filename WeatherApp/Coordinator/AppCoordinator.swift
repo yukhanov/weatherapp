@@ -15,15 +15,17 @@ class AppCoordinator: Coordinator {
     
     func start() {
         var vc: UIViewController & Coordinating = CityViewController()
+        
         vc.coordinator = self
+  
         navigationController?.setViewControllers([vc], animated: false)
     }
     
     func eventOccured(with type: Event) {
         switch type {
         case .showCurrentVC(let data):
-            var vc: UIViewController & Coordinating = CurrentWeatherViewController()
-            vc.cityWeather.append(data)
+            var vc: UIViewController & Coordinating = WeatherViewController()
+            vc.weatherArray = data
             vc.coordinator = self
             navigationController?.setViewControllers([vc], animated: true)
         }
