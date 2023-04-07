@@ -34,12 +34,8 @@ class WeatherViewController: UIViewController, Coordinating {
     
         
         weatherViewModel.addWeatherToArray(tableView: currentTableView)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.currentTableView.reloadData()
-        }
-        
-        
+
+
         
     }
     

@@ -25,8 +25,8 @@ class AppCoordinator: Coordinator {
         switch type {
         case .showCurrentVC(let data):
             var vc: UIViewController & Coordinating = WeatherViewController()
-            vc.weatherArray = data
             vc.coordinator = self
+            vc.weatherArray.append(contentsOf: data)
             navigationController?.setViewControllers([vc], animated: true)
         }
 

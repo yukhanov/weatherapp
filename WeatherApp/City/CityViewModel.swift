@@ -24,9 +24,11 @@ class CityViewModel {
             
             switch result {
             case .success(let data):
-                        self?.dataSource.value = data!
-                        print("Its data\(data)")
-                        print("Its datasource: \(self?.dataSource.value)")
+                if let unwrappedData = data {
+                    self?.dataSource.value.append(contentsOf: unwrappedData)
+                      print("Its data: \(unwrappedData)")
+                      print("Its datasource: \(self?.dataSource.value)")
+                  }
                     
             
                
