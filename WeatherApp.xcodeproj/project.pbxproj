@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0022DB9D29DFEB2C00CD1D11 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022DB9C29DFEB2C00CD1D11 /* UserDefaultsHelper.swift */; };
 		007EA09D29BAF22000314ECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007EA09C29BAF22000314ECF /* AppDelegate.swift */; };
 		007EA09F29BAF22000314ECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007EA09E29BAF22000314ECF /* SceneDelegate.swift */; };
 		007EA0A129BAF22000314ECF /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007EA0A029BAF22000314ECF /* CityViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0022DB9C29DFEB2C00CD1D11 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		007EA09929BAF22000314ECF /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007EA09C29BAF22000314ECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		007EA09E29BAF22000314ECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0022DB9B29DFEB0600CD1D11 /* LocalPersistence */ = {
+			isa = PBXGroup;
+			children = (
+				0022DB9C29DFEB2C00CD1D11 /* UserDefaultsHelper.swift */,
+			);
+			path = LocalPersistence;
+			sourceTree = "<group>";
+		};
 		007EA09029BAF22000314ECF = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		007EA09B29BAF22000314ECF /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				0022DB9B29DFEB0600CD1D11 /* LocalPersistence */,
 				00F1CAEE29CF01C100F1B9A1 /* Classes */,
 				007EA0B629BB4C2100314ECF /* City */,
 				007EA0C829BF4D6500314ECF /* CurrentWeather */,
@@ -249,6 +260,7 @@
 				007EA0A129BAF22000314ECF /* CityViewController.swift in Sources */,
 				007EA0B429BB1FB300314ECF /* AppCoordinator.swift in Sources */,
 				007EA09D29BAF22000314ECF /* AppDelegate.swift in Sources */,
+				0022DB9D29DFEB2C00CD1D11 /* UserDefaultsHelper.swift in Sources */,
 				007EA09F29BAF22000314ECF /* SceneDelegate.swift in Sources */,
 				00C52BDE29D03C5200757713 /* Dynamic.swift in Sources */,
 				007EA0CC29BF4DA900314ECF /* WeatherViewModel.swift in Sources */,

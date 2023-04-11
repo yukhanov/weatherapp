@@ -26,8 +26,13 @@ class AppCoordinator: Coordinator {
         case .showCurrentVC(let data):
             var vc: UIViewController & Coordinating = WeatherViewController()
             vc.coordinator = self
-            vc.weatherArray.append(contentsOf: data)
+            vc.newWeather.append(contentsOf: data)
             navigationController?.setViewControllers([vc], animated: true)
+        case .addNewCityVC:
+            var vc: UIViewController & Coordinating = CityViewController()
+            vc.coordinator = self
+            navigationController?.pushViewController(vc, animated: false)
+            
         }
 
 

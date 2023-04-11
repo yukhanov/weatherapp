@@ -8,7 +8,7 @@
 import UIKit
 
 class CityViewController: UIViewController, Coordinating {
-    var weatherArray = [Weather]()
+    var newWeather = [Weather]()
 
     
     var coordinator: Coordinator?
@@ -45,23 +45,30 @@ class CityViewController: UIViewController, Coordinating {
         view.backgroundColor = .systemBackground
         
         title = "Weather App"
-        
+                
         setViews()
         setConstraints()
         
+
+     
+
+        
         
     }
+    
+  
     
     @objc func getWeatherButtonTapped() {
         if let cityName = cityTextField.text {
             if cityTextField.text?.count != 0 {
             
                 self.cityViewModel.getData(for: cityName)
+                
                 self.cityViewModel.dataSource.bind { result in
-                    print(result)
-                    
+                    UserDefaultsHelper.saveNewWeather(allObjects: result)
                     self.coordinator?.eventOccured(with: .showCurrentVC(result))
                 }
+                
                 
             }
             

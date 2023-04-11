@@ -10,6 +10,7 @@ import UIKit
 class WeatherViewController: UIViewController, Coordinating {
     
     var weatherArray = [Weather]()
+    var newWeather = [Weather]()
     
     var coordinator: Coordinator?
     let weatherViewModel = WeatherViewModel()
@@ -29,14 +30,42 @@ class WeatherViewController: UIViewController, Coordinating {
         view.backgroundColor = .systemBackground
         setViews()
         setConstraints()
+        rightBarButton()
+        title = "WeatherApp"
         
-        print(weatherArray)
+        getData()
+        
     
         
-        weatherViewModel.addWeatherToArray(tableView: currentTableView)
+    }
+    
+    func getData() {
+        weatherArray = UserDefaultsHelper.getAllWeather!
+        newWeather = UserDefaultsHelper.getNewWeather!
+        weatherArray += newWeather
+        UserDefaultsHelper.saveAllWeather(allObjects: weatherArray)
+    }
+    
+    func saveValue(from array: [Weather]) {
+        UserDefaultsHelper.saveAllWeather(allObjects: array)
+    }
+    
+  
+    
 
-
+    
+    func rightBarButton() {
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                             target: self,
+                                             action: #selector(addNewCity))
+        navigationItem.rightBarButtonItem = rightBarButton
         
+    }
+    
+    
+    
+    @objc func addNewCity() {
+        coordinator?.eventOccured(with: .addNewCityVC)
     }
     
 }

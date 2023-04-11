@@ -13,6 +13,9 @@ class CityViewModel {
     let networkManager = NetworkService()
     var isLoading: Observable<Bool> = Observable(false)
     var dataSource = Dynamic(value: [Weather]())
+    let userDefaults = UserDefaults.standard
+    
+ 
     
     func getData(for city: String) {
         if isLoading.value ?? true {
@@ -26,8 +29,7 @@ class CityViewModel {
             case .success(let data):
                 if let unwrappedData = data {
                     self?.dataSource.value.append(contentsOf: unwrappedData)
-                      print("Its data: \(unwrappedData)")
-                      print("Its datasource: \(self?.dataSource.value)")
+                
                   }
                     
             
