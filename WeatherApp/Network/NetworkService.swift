@@ -25,7 +25,7 @@ class NetworkService {
             if let data = decodedData {
                 DispatchQueue.main.async {
                     completion(.success([data.self]))
-                    print(data.self)
+                 
                     
                 }
             }

@@ -8,12 +8,15 @@
 import UIKit
 
 class CityViewController: UIViewController, Coordinating {
-    var cityWeather: [Weather] = []
+    var newWeather = [Weather]()
+
     
     var coordinator: Coordinator?
     let cityViewModel = CityViewModel()
     
-// MARK: - init UIElements
+ 
+    
+    // MARK: - init UIElements
     private lazy var cityTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -36,25 +39,36 @@ class CityViewController: UIViewController, Coordinating {
         return button
     }()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-   
-        title = "Weather App"
         
+        title = "Weather App"
+                
         setViews()
         setConstraints()
-       
+        
+
+     
+
+        
+        
     }
+    
+  
     
     @objc func getWeatherButtonTapped() {
         if let cityName = cityTextField.text {
             if cityTextField.text?.count != 0 {
-                cityViewModel.getData(for: cityName)
-                DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-                    self.coordinator?.eventOccured(with: .showCurrentVC(self.cityViewModel.weatherByCity[0]))
+            
+                self.cityViewModel.getData(for: cityName)
+                
+                self.cityViewModel.dataSource.bind { result in
+                    UserDefaultsHelper.saveNewWeather(allObjects: result)
+                    self.coordinator?.eventOccured(with: .showCurrentVC(result))
                 }
+                
                 
             }
             

@@ -6,6 +6,10 @@
 //
 import Foundation
 
+struct WeatherModel {
+    let weatherModel: [Weather?]
+}
+
 // MARK: - Weather
 struct Weather: Codable {
     let coord: Coord?
