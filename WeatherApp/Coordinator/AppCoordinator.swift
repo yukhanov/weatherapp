@@ -15,10 +15,18 @@ class AppCoordinator: Coordinator {
     
     func start() {
         var vc: UIViewController & Coordinating = CityViewController()
+        var weatherVC: UIViewController & Coordinating = WeatherViewController()
         
         vc.coordinator = self
+        
+        if isWeatherArrayHasData {
+            navigationController?.setViewControllers([weatherVC], animated: false)
+        } else {
+            navigationController?.setViewControllers([vc], animated: false)
+        }
+        
   
-        navigationController?.setViewControllers([vc], animated: false)
+        
     }
     
     func eventOccured(with type: Event) {

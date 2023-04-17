@@ -65,7 +65,7 @@ class WeatherCell: UITableViewCell {
         tempLabel.text = String(format: "%.0f°", ((model.main?.temp ?? 0) - 273.15))
         minTempLabel.text = String(format: "min: %.0f°", ((model.main?.tempMin ?? 0) - 273.15))
         maxTempLabel.text = String(format: "max: %.0f°", ((model.main?.tempMax ?? 0) - 273.15))
-//        descriptionLabel.text = model.weather[indexPath.row]?.main
+        descriptionLabel.text = model.weather[0]?.description
         
         let unixTimestamp: Int? = model.dt
 

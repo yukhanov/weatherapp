@@ -22,6 +22,7 @@ protocol Coordinator {
 protocol Coordinating {
     var coordinator: Coordinator? { get set }
     var newWeather: [Weather] { get set }
+    var weatherArray: [Weather] { get set }
   
 
 }
