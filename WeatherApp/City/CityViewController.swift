@@ -8,7 +8,10 @@
 import UIKit
 
 class CityViewController: UIViewController, Coordinating {
+    var weatherArray = [Weather]()
+    
     var newWeather = [Weather]()
+    
 
     
     var coordinator: Coordinator?

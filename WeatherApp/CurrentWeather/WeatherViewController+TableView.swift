@@ -24,6 +24,19 @@ extension WeatherViewController: ViewConfigurable, UITableViewDelegate, UITableV
         100
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            weatherViewModel.deleteWeather(in: &weatherArray, by: indexPath)
+            UserDefaultsHelper.saveAllWeather(allObjects: weatherArray)
+            tableView.reloadData()
+        }
+    }
+    
     func setViews() {
         view.addSubview(currentTableView)
         currentTableView.dataSource = self

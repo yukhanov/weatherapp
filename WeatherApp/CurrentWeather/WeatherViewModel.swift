@@ -9,7 +9,8 @@ import UIKit
 
 class WeatherViewModel {
     
-    
+    let networkService = NetworkService()
+   
   
     let userDefaults = UserDefaults.standard
     
@@ -33,7 +34,21 @@ class WeatherViewModel {
             }
         }
     }
+    
+    func changeStateWeatherArray() {
+        userDefaults.setValue(true, forKey: "hasData")
+        isWeatherArrayHasData = userDefaults.bool(forKey: "hasData")
+    }
+    
+//    func getActualWeather(cityArray: [Weather]) {
+//        networkService.getWeather(for: cityArray[0].name!) { [weak self] result in
+//            weatherVC.weatherArray
+//        }
+//    }
 
+    func deleteWeather(in weatherArray: inout [Weather], by indexPath: IndexPath) {
+        weatherArray.remove(at: indexPath.row)
+    }
    
     
     

@@ -33,13 +33,11 @@ class WeatherViewController: UIViewController, Coordinating {
         rightBarButton()
         title = "WeatherApp"
         
-        getData()
-        
+        setDataToArrays()
     
-        
     }
     
-    func getData() {
+    func setDataToArrays() {
         weatherArray = UserDefaultsHelper.getAllWeather!
         newWeather = UserDefaultsHelper.getNewWeather!
         weatherArray += newWeather
